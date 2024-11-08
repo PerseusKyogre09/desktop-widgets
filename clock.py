@@ -51,7 +51,7 @@ class TransparentClockWidget(QWidget):
         # System tray
         self.tray_icon = QSystemTrayIcon(self)
         self.tray_icon.setIcon(QIcon("images/clock_icon.png"))
-        self.tray_icon.setToolTip("Transparent Clock")
+        self.tray_icon.setToolTip("Clock Widget")
         
         # Tray menu
         tray_menu = QMenu()
