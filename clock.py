@@ -77,7 +77,10 @@ class TransparentClockWidget(QWidget):
         delta = event.globalPos() - self.old_pos
         self.move(self.x() + delta.x(), self.y() + delta.y())
         self.old_pos = event.globalPos()
-    
+        
+    def enterEvent(self, event):
+        self.close_button.show()
+
     def leaveEvent(self, event):
         self.closeButtonHover = False
         self.close_button.hide()
