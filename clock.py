@@ -22,7 +22,7 @@ class DraggableWindow(QWidget):
         # Close button
         self.close_button = QPushButton("X", self)
         self.close_button.setStyleSheet("background-color: transparent; color: white; font-size: 16px; border: none;")
-        self.close_button.clicked.connect(self.close)
+        self.close_button.clicked.connect(self.hide_to_tray)
         main_layout.addWidget(self.close_button, alignment=Qt.AlignRight)  # Align close button to the right
 
         # Timer to update time
@@ -38,6 +38,27 @@ class DraggableWindow(QWidget):
 
         # Tray menu setup
         tray_menu = QMenu()
+        tray_menu.setStyleSheet("""
+            QMenu {
+                background-color: #333;
+                border: 1px solid #555;
+                padding: 10px;
+                border-radius: 10px;
+            }
+            QMenu::item {
+                color: white;
+                padding: 8px 20px;
+                background-color: transparent;
+            }
+            QMenu::item:selected {
+                background-color: #444;
+            }
+            QMenu::separator {
+                height: 1px;
+                background: #666;
+                margin: 5px 0;
+            }
+        """)
         show_action = tray_menu.addAction("Show")
         show_action.triggered.connect(self.show)
         exit_action = tray_menu.addAction("Exit")
@@ -48,10 +69,36 @@ class DraggableWindow(QWidget):
         # Initialize the position tracking variable
         self.old_pos = None
 
+    def hide_to_tray(self):
+        self.hide()
+        # Shows message when closed
+        self.tray_icon.showMessage(
+            "Transparent Clock",
+            "The Clock widget has been minimized to the system tray.",
+            QSystemTrayIcon.Information,
+            3000
+        )
+
     def update_time(self):
         current_time = QDateTime.currentDateTime()
-        formatted_time = current_time.toString("hh:mm AP\ndddd, MMMM dd, yyyy")
-        self.time_date_label.setText(formatted_time)
+        # formatted_time = current_time.toString("hh:mm AP\ndddd, MMMM dd, yyyy")
+        hour = current_time.toString("hh")
+        minute = current_time.toString("mm")
+        am_pm = current_time.toString("AP")
+        date_text = current_time.toString("dddd, MMMM dd, yyyy")
+
+        # display_text = f"""
+        #     <div style="text-align: center;">
+        #         <span style="font-size: 70px;">{hour}:{minute}</span><br>
+        #         <span style="font-size: 70px;">{am_pm}</span><br>
+        #         <span style="font-size: 30px;">{date_text}</span>
+        #     </div>
+        # """
+
+        # self.time_date_label.setText(display-text)
+        display_text = f"{hour}:{minute}\n{am_pm}\n{date_text}"
+        self.time_date_label.setText(display_text)
+
 
     def mousePressEvent(self, event):
         if event.button() == Qt.LeftButton:
