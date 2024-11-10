@@ -35,13 +35,11 @@ The `mplayer.py` widget is a transparent music player that can play music from y
 ![M-Player](https://imgur.com/Bp8XXAj.png)
 
 ### Requirements
-
-- Python 3.x
-- PyQt5
+Check `requirements.txt`.
 
 You can install PyQt5 using `pip`:
 ```bash
-pip install pyqt5
+pip install requirements.txt
 ```
 
 ## Usage
