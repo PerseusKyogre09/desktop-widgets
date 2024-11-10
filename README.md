@@ -39,7 +39,7 @@ Check `requirements.txt`.
 
 You can install PyQt5 using `pip`:
 ```bash
-pip install requirements.txt
+pip install -r requirements.txt
 ```
 
 ## Usage
