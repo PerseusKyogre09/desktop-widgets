@@ -13,11 +13,12 @@ The `clock.py` widget is a transparent, frameless clock that displays the curren
 - **Transparent Background**: The widget has a translucent background with rounded corners.
 - **Position**: Initially placed at the top-right corner of the screen.
 - **Close Button**: A hidden close button appears when the mouse hovers over the clock's area.
-- **Draggable**: The clock widget can be moved around the screen by clicking and dragging. (Does not work right now, it's a bug)
+- **Draggable**: The clock widget can be moved around the screen by clicking and dragging.
 - **Minimize To Tray**: The widget can be minimized to tray when `X` button is clicked.
 
 ## Screenshots
-![Clock](https://imgur.com/ZYPijfD.png)
+![Clock](https://imgur.com/N0KZd8s.png)
+![Notif](https://imgur.com/bhMrmN4.png)
 ![Clock Tray](https://imgur.com/HkxfTl9.png)
 
 ### Requirements
