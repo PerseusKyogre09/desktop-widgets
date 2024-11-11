@@ -2,3 +2,4 @@ fonts/
 venv/
 build/
 .venv
+.env

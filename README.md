@@ -28,6 +28,9 @@ The `mplayer.py` widget is a transparent music player that can play music from y
 - **Progress Menu**: A progress menu which will update every second according to the time in the music.
 - **Name display**: Displays the currently playing music, also blinking if the music is in pause mode.
 
+### Weather Widget (`weather.py`)
+The `weather.py` widget is currently a work in progress. Cannot test it due to issues with OpenWeatherMap API.
+
 ## Screenshots
 ![Clock](https://imgur.com/N0KZd8s.png)
 ![Notif](https://imgur.com/bhMrmN4.png)
