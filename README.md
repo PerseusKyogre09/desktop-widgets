@@ -29,13 +29,24 @@ The `mplayer.py` widget is a transparent music player that can play music from y
 - **Name display**: Displays the currently playing music, also blinking if the music is in pause mode.
 
 ### Weather Widget (`weather.py`)
-The `weather.py` widget is currently a work in progress. Cannot test it due to issues with OpenWeatherMap API.
+The `weather.py` widget is a transparent, draggable weather display that shows real-time weather conditions for a user’s location. It has the following features:
+
+- **Customizable Font**: The Weather widget can display a custom font (default is "Arial" if no custom font is provided).
+- **Real-Time Weather Update**: The widget updates the weather every 10 minutes, fetching data from the OpenWeather API.
+- **Transparent Background**: The widget has a translucent background with rounded corners, giving it a sleek and modern look.
+- **Weather Condition Display**: Displays the current weather condition (e.g., sunny, cloudy, rainy, etc.) and temperature in Celsius.
+- **Weather Animation**: Displays a GIF corresponding to the current weather condition (e.g., sunny, rain, snow, etc.).
+- **Location Detection**: Automatically detects the user's city based on their IP address.
+- **Draggable**: The widget can be moved around the screen by clicking and dragging.
+- **Minimize To Tray**: The widget can be minimized to the system tray when the close button is clicked.
 
 ## Screenshots
 ![Clock](https://imgur.com/N0KZd8s.png)
 ![Notif](https://imgur.com/bhMrmN4.png)
 ![Clock Tray](https://imgur.com/HkxfTl9.png)
 ![M-Player](https://imgur.com/Bp8XXAj.png)
+![Weather](https://imgur.com/iCIcO0m.png)
+
 
 ### Requirements
 Check `requirements.txt`.
