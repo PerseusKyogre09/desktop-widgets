@@ -3,7 +3,7 @@ import vlc
 import os
 from PyQt5.QtWidgets import QApplication, QWidget, QVBoxLayout, QPushButton, QLabel, QFileDialog, QMenu, QSystemTrayIcon, QHBoxLayout, QProgressBar, QGraphicsOpacityEffect
 from PyQt5.QtCore import Qt, QTime, QTimer, QPoint, QSize, QPropertyAnimation
-from PyQt5.QtGui import QMouseEvent, QFont, QIcon, QFontDatabase
+from PyQt5.QtGui import QMouseEvent, QFont, QIcon, QFontDatabase, QPixmap
 
 class TransparentMusicPlayer(QWidget):
     def __init__(self):
@@ -47,7 +47,6 @@ class TransparentMusicPlayer(QWidget):
         self.minimize_to_tray_button.clicked.connect(self.hide_to_tray)
 
         button_layout = QHBoxLayout()
-        button_layout.addWidget(self.minimize_to_tray_button, alignment=Qt.AlignRight)
         main_layout.addLayout(button_layout)
 
         # VLC player 
@@ -115,12 +114,24 @@ class TransparentMusicPlayer(QWidget):
         load_button.setStyleSheet("background-color: transparent; border: none;")
         load_button.clicked.connect(self.load_music)
 
+        # Loop button
+        self.loop_button = QPushButton(self)
+        self.loop_button.setIcon(QIcon("images/loop_icon.png"))
+        self.loop_button.setIconSize(QSize(24, 24))
+        self.loop_button.setStyleSheet("background-color: transparent; border: none;")
+        self.loop_button.clicked.connect(self.toggle_loop)
+        self.is_loop_enabled = False
+
         # Layout for buttons
         control_button_layout = QHBoxLayout()
         control_button_layout.addWidget(self.play_button)
         control_button_layout.addWidget(self.stop_button)
         control_button_layout.addWidget(load_button)
         main_layout.addLayout(control_button_layout)
+        button_layout.addWidget(self.loop_button, alignment=Qt.AlignRight)
+        button_layout.addWidget(self.loop_button, alignment=Qt.AlignRight)
+        button_layout.addWidget(self.minimize_to_tray_button, alignment=Qt.AlignRight)
+
 
         # Timer
         self.timer = QTimer(self)
@@ -211,6 +222,11 @@ class TransparentMusicPlayer(QWidget):
         self.blink_animation.stop()
         self.opacity_effect.setOpacity(1.0)
 
+    def toggle_loop(self):
+        self.is_loop_enabled = not self.is_loop_enabled
+        icon_path = "images/loop_icon_active.png" if self.is_loop_enabled else "images/loop_icon.png"
+        self.loop_button.setIcon(QIcon(icon_path))
+
     def update_position(self):
         current_time_sec = int(self.player.get_time() / 1000)
         total_time_sec = int(self.player.get_length() / 1000)
@@ -219,10 +235,21 @@ class TransparentMusicPlayer(QWidget):
         total_time = QTime(0, (total_time_sec // 60) % 60, total_time_sec % 60)
 
         self.duration_label.setText(f"{current_time.toString('mm:ss')} / {total_time.toString('mm:ss')}")
-        
+
         if total_time_sec > 0:
             progress_value = (current_time_sec / total_time_sec) * 100
             self.progress_bar.setValue(int(progress_value))
+
+        # Looping logic
+        if self.is_loop_enabled:
+            state = self.player.get_state()
+            if state == vlc.State.Ended:
+                self.player.stop()
+                self.player.set_time(0)  # Reset to start
+                self.player.play()
+        elif self.player.get_state() == vlc.State.Ended:
+            self.timer.stop()
+
 
     def on_tray_icon_activated(self, reason):
         if reason == QSystemTrayIcon.Trigger:
