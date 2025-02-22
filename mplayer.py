@@ -265,8 +265,12 @@ class TransparentMusicPlayer(QWidget):
             3000,
         )
 
-if __name__ == '__main__':
+def run_mplayer():
     app = QApplication(sys.argv)
     player = TransparentMusicPlayer()
     player.show()
-    sys.exit(app.exec_())
+    player.move(1440, 0)
+    app.exec_()
+
+if __name__ == '__main__':
+    run_mplayer()

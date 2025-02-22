@@ -1,36 +1,25 @@
+import sys
 from PyQt5.QtCore import QTimer, Qt, QDateTime
 from PyQt5.QtWidgets import (
-    QApplication,
-    QLabel,
-    QWidget,
-    QVBoxLayout,
-    QSystemTrayIcon,
-    QMenu,
-    QPushButton,
-    QGraphicsOpacityEffect,
-    QHBoxLayout
+    QApplication, QLabel, QWidget, QVBoxLayout, 
+    QSystemTrayIcon, QMenu, QPushButton, 
+    QGraphicsOpacityEffect, QHBoxLayout
 )
 from PyQt5.QtGui import QIcon, QFont, QFontDatabase
-import sys
 
 class DraggableWindow(QWidget):
     def __init__(self):
         super().__init__()
-
-        # Set Window
         self.setWindowFlags(Qt.FramelessWindowHint | Qt.Tool | Qt.WindowStaysOnBottomHint)
         self.setAttribute(Qt.WA_TranslucentBackground)
         self.setStyleSheet("background-color: rgba(0, 0, 0, 120); border-radius: 15px;")
 
-        # Custom Font
-        font_id = QFontDatabase.addApplicationFont("fonts/minecraft.ttf") # Change it to whatever font you like
+        font_id = QFontDatabase.addApplicationFont("fonts/minecraft.ttf")
         font_family = QFontDatabase.applicationFontFamilies(font_id)[0] if font_id != -1 else "Arial"
 
-        # Layout setup
         main_layout = QVBoxLayout(self)
         main_layout.setAlignment(Qt.AlignCenter)
 
-        # Clock Style
         self.date_time_label = QLabel("", self)
         self.date_time_font = QFont(font_family, 36)
         self.date_time_label.setFont(self.date_time_font)
@@ -39,7 +28,6 @@ class DraggableWindow(QWidget):
 
         main_layout.addWidget(self.date_time_label)
 
-        # Close button
         self.close_button = QPushButton("X", self)
         self.close_button.setStyleSheet("background-color: transparent; color: white; font-size: 36px; border: none;")
         self.close_button.clicked.connect(self.hide_to_tray)
@@ -47,22 +35,18 @@ class DraggableWindow(QWidget):
         button_layout.addWidget(self.close_button, alignment=Qt.AlignCenter)
         main_layout.addLayout(button_layout)
 
-        # Hide button
         self.opacity_effect = QGraphicsOpacityEffect(self.close_button)
         self.opacity_effect.setOpacity(0.01)
         self.close_button.setGraphicsEffect(self.opacity_effect)
 
-        # Timer to update time
         self.timer = QTimer(self)
         self.timer.timeout.connect(self.update_date_time)
         self.timer.start(1000)
 
-        # System tray icon setup
         self.tray_icon = QSystemTrayIcon(self)
         self.tray_icon.setIcon(QIcon("images/clock_icon.png"))
         self.tray_icon.setToolTip("Clock Widget")
 
-        # Tray menu setup
         tray_menu = QMenu()
         tray_menu.setStyleSheet("""
             QMenu {
@@ -110,7 +94,6 @@ class DraggableWindow(QWidget):
         minute = current_time.toString("mm")
         am_pm = current_time.toString("AP")
 
-        # Date format
         day_name = current_time.toString("ddd")
         day_month = current_time.toString("ddMM")
         year = current_time.toString("yy")
@@ -141,10 +124,13 @@ class DraggableWindow(QWidget):
         if reason == QSystemTrayIcon.Trigger:
             self.show()
 
-if __name__ == "__main__":
+def run_clock():
     app = QApplication(sys.argv)
     window = DraggableWindow()
     window.resize(320, 240)
     window.move(1440, 0)
     window.show()
-    sys.exit(app.exec_())
+    app.exec_()
+
+if __name__ == "__main__":
+    run_clock()

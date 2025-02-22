@@ -166,8 +166,12 @@ class WeatherWidget(QWidget):
             self.move(event.globalPos() - self.start_pos)
             event.accept()
 
-if __name__ == '__main__':
+def run_weather():
     app = QApplication(sys.argv)
     widget = WeatherWidget()
     widget.show()
-    sys.exit(app.exec_())
+    widget.move(1440, 0)
+    app.exec_()
+
+if __name__ == '__main__':
+    run_weather()
