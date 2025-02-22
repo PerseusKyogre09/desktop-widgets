@@ -29,6 +29,7 @@ The `mplayer.py` widget is a transparent music player that can play music from y
 - **Name display**: Displays the currently playing music, also blinking if the music is in pause mode.
 
 ### Weather Widget (`weather.py`)
+
 The `weather.py` widget is a transparent, draggable weather display that shows real-time weather conditions for a user’s location. It has the following features:
 
 - **Customizable Font**: The Weather widget can display a custom font (default is "Arial" if no custom font is provided).
@@ -41,6 +42,7 @@ The `weather.py` widget is a transparent, draggable weather display that shows r
 - **Minimize To Tray**: The widget can be minimized to the system tray when the close button is clicked.
 
 ## Screenshots
+
 ![Clock](https://imgur.com/N0KZd8s.png)
 ![Notif](https://imgur.com/bhMrmN4.png)
 ![Clock Tray](https://imgur.com/HkxfTl9.png)
@@ -49,6 +51,7 @@ The `weather.py` widget is a transparent, draggable weather display that shows r
 
 
 ### Requirements
+
 Check `requirements.txt`.
 
 You can install PyQt5 using `pip`:
@@ -57,6 +60,7 @@ pip install -r requirements.txt
 ```
 
 ## Usage
+
 1. Clone this repository to your local machine.
 2. Navigate to the root directory where the python files are located.
 3. Run the script:
@@ -67,10 +71,20 @@ pip install -r requirements.txt
  This will launch the widgets on your screen.
 
 ## Adding More Widgets
+
 In the future, additional widgets will be added to this repository. Each widget will be implemented as a separate Python file under the same repository. You can easily import and use these widgets in your own PyQt5 applications.
 
 ## Contributing
+
 Feel free to submit issues or pull requests if you have suggestions or improvements for any of the widgets. Contributions are welcome!
 
-## License
-This project is licensed under the MIT License - see the LICENSE file for details.
+<div align="center">
+  <a href="https://twitter.com/KyogrePerseus"><img alt="Twitter Follow" src="https://img.shields.io/twitter/follow/KyogrePerseus"></a>
+  <a href="https://github.com/PersesKyogre09/desktop-widgets/blob/main/LICENSE"><img alt="License" src="https://img.shields.io/badge/license-MIT-purple"></a>
+</div>
+
+### Our Contributors ✨
+
+<a href="https://github.com/PerseusKyogre09/desktop-widgets/graphs/contributors">
+  <img src="https://contrib.rocks/image?repo=PerseusKyogre09/desktop-widgets" />
+</a>
