@@ -4,7 +4,8 @@ This repository contains a collection of custom PyQt5 widgets. Currently, it inc
 
 ## Current Widget
 
-### Transparent Clock Widget (`clock.py`)
+### Transparent Clock Widget (`clock.py`) 
+
 
 The `clock.py` widget is a transparent, frameless clock that displays the current time and date with a custom font. It has the following features:
 
