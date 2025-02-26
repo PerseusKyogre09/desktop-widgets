@@ -1,6 +1,6 @@
 # Multi-Widget Repository
 
-This repository contains a collection of custom PyQt5 widgets. Currently, it includes a transparent clock widget and a music player, but additional widgets will be added in the future.
+This repository contains a collection of custom PyQt5 widgets. Currently, it includes a transparent clock widget, music player and a weather widget, but additional widgets will be added in the future.
 
 ## Current Widget
 
