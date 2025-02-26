@@ -4,6 +4,9 @@ This repository contains a collection of custom PyQt5 widgets. Currently, it inc
 
 ## Current Widget
 
+A brand new central Launcher to launch multiple widgets at once! Future plans to have it be a installed application.
+
+
 ### Transparent Clock Widget (`clock.py`) 
 
 
@@ -44,11 +47,17 @@ The `weather.py` widget is a transparent, draggable weather display that shows r
 
 ## Screenshots
 
+![Launcher](https://imgur.com/FCX4TvH.png)
 ![Clock](https://imgur.com/N0KZd8s.png)
 ![Notif](https://imgur.com/bhMrmN4.png)
 ![Clock Tray](https://imgur.com/HkxfTl9.png)
 ![M-Player](https://imgur.com/Bp8XXAj.png)
 ![Weather](https://imgur.com/iCIcO0m.png)
+
+## Videos
+
+
+https://github.com/user-attachments/assets/115f1f5c-b9ff-4969-80e9-df713a0318a2
 
 
 ### Requirements
@@ -66,10 +75,9 @@ pip install -r requirements.txt
 2. Navigate to the root directory where the python files are located.
 3. Run the script:
  ```bash
- python clock.py
- python mplayer.py
+ python launcher.py
  ```
- This will launch the widgets on your screen.
+ This will launch the Launcher on your screen. You can use it to run multiple widgets at once.
 
 ## Adding More Widgets
 
